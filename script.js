@@ -1,5 +1,4 @@
-function create() {
-  let userInput = prompt("enter number 1-100");
+function create(userInput = 16) {
   if (userInput >= 1 && userInput <= 100) {
     let gridSize = userInput * userInput;
     let box = document.getElementById("container");
@@ -14,13 +13,22 @@ function create() {
       };
     }
   } else {
-    console.log(test);
+    alert("invalid");
   }
 }
 
-let start = create();
+function removeElementsByClass(className) {
+  var elements = document.getElementsByClassName(className);
+  while (elements.length > 0) {
+    elements[0].parentNode.removeChild(elements[0]);
+  }
+}
 
 let reset = document.getElementById("reset");
 reset.onclick = function () {
-  window.location.reload(false);
+  let a = removeElementsByClass("grid");
+  let newInput = document.getElementById("search");
+  let b = create(newInput.value);
 };
+
+create();
